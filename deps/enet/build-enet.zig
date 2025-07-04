@@ -4,7 +4,13 @@ const ENET_SRC = "deps/enet/src/";
 
 pub fn build(
     exe: *std.Build.Step.Compile,
+    target: std.Build.ResolvedTarget,
 ) void {
+    if (target.result.os.tag == .windows) {
+        exe.linkSystemLibrary("winmm");
+        exe.linkSystemLibrary("ws2_32");
+    }
+
     exe.root_module.addCMacro("HAS_FCNTL", "1");
     exe.root_module.addCMacro("HAS_POLL", "1");
     exe.root_module.addCMacro("HAS_GETNAMEINFO", "1");

@@ -28,7 +28,7 @@ pub fn build(b: *std.Build) void {
     exe.root_module.addImport("raygui", raygui);
 
     ode_lib.build(exe, target, optimize, .{});
-    enet_lib.build(exe);
+    enet_lib.build(exe, target);
 
     b.installArtifact(exe);
 
