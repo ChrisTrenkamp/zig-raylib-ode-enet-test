@@ -2,5 +2,5 @@
 	path = deps/ode/src
 	url = https://bitbucket.org/odedevs/ode.git
 [submodule "deps/enet"]
-	path = deps/enet
+	path = deps/enet/src
 	url = https://github.com/lsalzman/enet
