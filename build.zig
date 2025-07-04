@@ -1,6 +1,5 @@
 const std = @import("std");
 const enet_lib = @import("deps/enet/build-enet.zig");
-const ode_lib = @import("deps/ode/build-ode.zig");
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
@@ -27,7 +26,19 @@ pub fn build(b: *std.Build) void {
     exe.root_module.addImport("raylib", raylib);
     exe.root_module.addImport("raygui", raygui);
 
-    ode_lib.build(exe, target, optimize, .{});
+    const ode_dep = b.dependency("ode", .{
+        .target = target,
+        .optimize = optimize,
+        .with_opcode = b.option(
+            bool,
+            "ode-with-opcode",
+            "Build ODE with the old OPCODE trimesh-trimesh collider.",
+        ) orelse false,
+    });
+    const ode_headers = ode_dep.path("include");
+    exe.addIncludePath(ode_headers);
+    //ode_dep.artifact("ode").addIncludePath(.{ .dependency = .{ .dependency = ode_dep, .sub_path = "" } });
+
     enet_lib.build(exe);
 
     b.installArtifact(exe);

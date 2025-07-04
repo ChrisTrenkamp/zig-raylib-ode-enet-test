@@ -8,6 +8,10 @@
             .url = "git+https://github.com/Not-Nik/raylib-zig?ref=devel#5013830647196ba938a3a25a36b8245606e9a9cd",
             .hash = "raylib_zig-5.6.0-dev-KE8REM0tBQAHVn9Xjqlgu9l1qgfTmP8aJa1kLhD584bV",
         },
+        .ode = .{
+            .url = "../deps/ode",
+            .hash = "ode-0.16.6-L5sTtghLngAkF1NRGd1AcMQ9T81cP1uCZdwYIN0xykr8",
+        },
     },
     .paths = .{
         "build.zig",

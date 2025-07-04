@@ -1,0 +1,12 @@
+.{
+    .name = .ode,
+    .version = "0.16.6",
+    .fingerprint = 0x80836e7bb6139b2f,
+    .minimum_zig_version = "0.14.1",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
