@@ -1,4 +1,5 @@
 const std = @import("std");
+const enet_lib = @import("deps/enet/build-enet.zig");
 const ode_lib = @import("deps/ode/build-ode.zig");
 
 pub fn build(b: *std.Build) void {
@@ -27,6 +28,7 @@ pub fn build(b: *std.Build) void {
     exe.root_module.addImport("raygui", raygui);
 
     ode_lib.build(exe, target, optimize, .{});
+    enet_lib.build(exe);
 
     b.installArtifact(exe);
 

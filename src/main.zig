@@ -1,10 +1,15 @@
 const rl = @import("raylib");
 const std = @import("std");
+const enet = @cImport({
+    @cInclude("enet/enet.h");
+});
 const ode = @cImport({
     @cInclude("ode/ode.h");
 });
 
 pub fn main() anyerror!void {
+    const enetClient = enet.enet_host_create(null, 1, 2, 0, 0);
+    defer enet.enet_host_destroy(enetClient);
     const odeWorld = ode.dWorldCreate();
     defer ode.dWorldDestroy(odeWorld);
     std.log.info("Hello\n", .{});
