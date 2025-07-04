@@ -1,0 +1,6 @@
+[submodule "deps/ode/src"]
+	path = deps/ode/src
+	url = https://bitbucket.org/odedevs/ode.git
+[submodule "deps/enet"]
+	path = deps/enet
+	url = https://github.com/lsalzman/enet
